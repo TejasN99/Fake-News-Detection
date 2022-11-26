@@ -15,7 +15,7 @@ from sklearn import linear_model
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import f1_score,precision_score,recall_score
 
-newstrain = pd.read_csv("/content/drive/MyDrive/Datasets/train.csv")
+newstrain = pd.read_csv("train.csv")
 
 """Ytest.head()"""
 
