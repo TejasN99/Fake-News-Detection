@@ -13,7 +13,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics import accuracy_score
 from sklearn import linear_model
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import f1_score
+from sklearn.metrics import f1_score,precision_score,recall_score
 
 newstrain = pd.read_csv("/content/drive/MyDrive/Datasets/train.csv")
 
@@ -50,8 +50,8 @@ train_accuracy = accuracy_score(Y_predicted,Y_train)
 print(train_accuracy)
 
 
-Y_train_predicted=logistic.predict(X_test)
-test_accuracy = accuracy_score(Y_train_predicted,Y_test)
+Y_test_predicted=logistic.predict(X_test)
+test_accuracy = accuracy_score(Y_test_predicted,Y_test)
 
 print(test_accuracy)
 
@@ -64,3 +64,12 @@ if classify==0:
   print("This news is Real")
 else:
   print("This news is Fake")
+
+score=f1_score(Y_train, Y_predicted)
+test_accuracy = accuracy_score(Y_test_predicted,Y_test)
+recall=recall_score(Y_test, Y_test_predicted)
+precision=precision_score(Y_test, Y_test_predicted)
+print(f'Accuracy: {round(test_accuracy * 100, 2)}%')
+print(f'F1 Score: {round(score * 100, 2)}%')
+print(f'Recall: {round(recall * 100, 2)}%')
+print(f'Precision: {round(precision * 100, 2)}%')
